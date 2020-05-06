@@ -8,7 +8,7 @@ I made a shitty GUI with Tkinter which can process single files or multiple file
 i)  Install the packages in the setup/requirements.txt file<br />
 ii) Install [Tesseract](Link : https://tesseract-ocr.github.io/tessdoc/Home.html)<br />
   Direct Links for Noobs like me :<br />
-  [Winddows](https://github.com/UB-Mannheim/tesseract/wiki)<br />
+  [Windows](https://github.com/UB-Mannheim/tesseract/wiki)<br />
   Linux : <br />
   >sudo apt-get install tesseract-ocr && sudo apt-get install tesseract-dev
   
