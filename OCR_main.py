@@ -7,15 +7,17 @@ import os
 fil=""
 ra = Tk()
 ra.title('Origin OCR')
-ra.configure(background="thistle")
+ra.configure(background="#03031b")
 ta=StringVar(ra)
 ta.set("Select File or Folder Then Click Start")
 ra.configure(height="999",width="999")
-Label(ra,text="Welcome to Origin-OCR      ",font=('arial',15),bg="thistle",fg="Black").grid(row=0,column=1)
-Label(ra,text="Language : ",font=('arial',15),fg="Black",bg="thistle").grid(row=1,column=0)
+Label(ra,text="Welcome to Origin-OCR      ",font=('arial',21),bg="#03031b",fg="white").grid(row=0,column=1)
+Label(ra,text="Language : ",font=('arial',15),fg="white",bg="#03031b").grid(row=1,column=0)
 variable = StringVar(ra)
 variable.set("eng")
-OptionMenu(ra, variable, "eng","ben",).grid(row=1,column=1)
+drp=OptionMenu(ra, variable, "eng","ben",)
+drp.config(width=6, font=('Helvetica', 12))
+drp.grid(row=1,column=1)
 if variable=="English":
     variable.set(eng)
 elif variable=="Bengali":
@@ -71,9 +73,9 @@ def start():
             
     
 Button(ra,text="Select File",command=sel_file).grid(row=4,column=0,padx=5,pady="20")
-Label(ra,text="OR",bg="thistle").grid(row=4,column=1)
+Label(ra,text="OR",bg="#03031b").grid(row=4,column=1)
 Button(ra,text="Select Folder",command=sel_dir).grid(row=4,column=2,pady="20",padx=20)
-Label(ra,textvariable=ta,bg="white").grid(row=5,column=1)
+Label(ra,textvariable=ta,bg="#03031b",fg="white",font=("Arial",12)).grid(row=5,column=1)
 Button(ra,text="Start",padx=20,command=start).grid(row=6,column=1,pady="20")
 
 
