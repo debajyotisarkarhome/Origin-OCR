@@ -2,17 +2,19 @@ import cv2
 import pytesseract
 from tkinter import *
 from tkinter.filedialog import *
+from PIL import ImageTk, Image
 from autocorrect import Speller
 import os
 fil=""
 ra = Tk()
 ra.title('Origin OCR')
-ra.configure(background="#03031b")
+ra.configure(background="black")
+ra.geometry("750x360")
 ta=StringVar(ra)
 ta.set("Select File or Folder Then Click Start")
 ra.configure(height="999",width="999")
-Label(ra,text="Welcome to Origin-OCR      ",font=('arial',21),bg="#03031b",fg="white").grid(row=0,column=1)
-Label(ra,text="Language : ",font=('arial',15),fg="white",bg="#03031b").grid(row=1,column=0)
+#Label(ra,text="Welcome to Origin-OCR      ",font=('arial',21),bg="#03031b",fg="white").grid(row=0,column=1)
+Label(ra,text="Language : ",font=('arial',15),fg="white",bg="black").grid(row=1,column=0)
 variable = StringVar(ra)
 variable.set("eng")
 drp=OptionMenu(ra, variable, "eng","ben",)
@@ -59,7 +61,7 @@ def start():
             adap=cv2.adaptiveThreshold(gray,255,cv2.ADAPTIVE_THRESH_GAUSSIAN_C,cv2.THRESH_BINARY,29,11)
             #cv2.imshow("test",adap)
             if mk=="eng":
-                tex=spell(pytesseract.image_to_string(adap,lang=mk))
+                tex=pytesseract.image_to_string(adap,lang=mk)
             elif mk=="ben":
                 tex=pytesseract.image_to_string(adap,lang=mk)
             pth=fil[i]
@@ -73,13 +75,16 @@ def start():
             
     
 Button(ra,text="Select File",command=sel_file).grid(row=4,column=0,padx=5,pady="20")
-Label(ra,text="OR",bg="#03031b").grid(row=4,column=1)
+
+Label(ra,text="OR",bg="black").grid(row=4,column=1)
+
 Button(ra,text="Select Folder",command=sel_dir).grid(row=4,column=2,pady="20",padx=20)
-Label(ra,textvariable=ta,bg="#03031b",fg="white",font=("Arial",12)).grid(row=5,column=1)
+
+Label(ra,textvariable=ta,bg="black",fg="white",font=("Arial",12)).grid(row=5,column=1)
+
 Button(ra,text="Start",padx=20,command=start).grid(row=6,column=1,pady="20")
-
-
-
+img=ImageTk.PhotoImage(Image.open("head1.jpg"))
+Label(ra, image=img).grid(row=0,column=1)
 
 
 
